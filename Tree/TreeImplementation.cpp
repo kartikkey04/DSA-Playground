@@ -30,6 +30,14 @@ void preorder(TreeNode* root){
     preorder(root->right);
 }
 
+void postorder(TreeNode* root){
+    if(root == NULL) return;
+
+    cout<<root->data<<" ";
+    postorder(root->left);
+    postorder(root->right);
+}
+
 int main(){
 
     TreeNode* root = new TreeNode(10);
@@ -42,5 +50,8 @@ int main(){
 
     inorder(root);
     preorder(root);
+    postorder(root);
+
+    return 0;
 
 }
