@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 struct TreeNode {
@@ -42,6 +42,31 @@ void postorder(TreeNode* root){
     postorder(root->right);
 }
 
+// iterative preorder
+
+vector<int> iterativePreorder(TreeNode* root){
+    stack<TreeNode*> st;
+    vector<int> preorder;
+
+    if(root == NULL) return preorder;
+    st.push(root);
+
+    while(!st.empty()){
+        TreeNode* Node = st.top();
+        st.pop();
+
+        preorder.push_back(Node->data);
+
+        if(Node->right != NULL)
+        st.push(Node->right);
+
+        if(Node->left != NULL)
+        st.push(Node->left);
+    }
+
+    return preorder;
+}
+
 int main(){
 
     TreeNode* root = new TreeNode(10);
@@ -55,7 +80,13 @@ int main(){
     inorder(root);
     preorder(root);
     postorder(root);
+    vector<int> preorder = iterativePreorder(root);
 
+    // printing result return by iterative preorder.
+    for(int i=0; i<preorder.size(); i++){
+        cout<<preorder[i]<<" ";
+    }
+    
     return 0;
 
 }
