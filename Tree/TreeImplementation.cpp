@@ -12,6 +12,16 @@ struct TreeNode {
     }
 };
 
+// inorder traversal
+
+void inorder(TreeNode* root){
+    if(root == NULL) return;
+
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+
 int main(){
 
     TreeNode* root = new TreeNode(10);
@@ -21,5 +31,7 @@ int main(){
     root->left->right = new TreeNode(50);
     root->right->left = new TreeNode(60);
     root->right->right = new TreeNode(70);
+
+    inorder(root);
 
 }
