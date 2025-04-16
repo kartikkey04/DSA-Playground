@@ -22,6 +22,8 @@ void inorder(TreeNode* root){
     inorder(root->right);
 }
 
+// preorder traversal
+
 void preorder(TreeNode* root){
     if(root == NULL) return;
 
@@ -29,6 +31,8 @@ void preorder(TreeNode* root){
     preorder(root->left);
     preorder(root->right);
 }
+
+// postorder traversal
 
 void postorder(TreeNode* root){
     if(root == NULL) return;
