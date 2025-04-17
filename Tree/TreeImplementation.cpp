@@ -67,6 +67,29 @@ vector<int> iterativePreorder(TreeNode* root){
     return preorder;
 }
 
+// iterative inorder
+
+vector<int> iterativeInorder(TreeNode* root){
+    stack<TreeNode*> st;
+    TreeNode* node = root;
+    vector<int> inorder;
+
+    while(true){
+        if(node != NULL){
+            st.push(node);
+            node = node->left;
+        }
+        else{
+            if(st.empty() == true) break;
+            node = st.top();
+            st.pop();
+            inorder.push_back(node->data);
+            node = node->right;
+        }
+    }
+    return inorder;
+}
+
 int main(){
 
     TreeNode* root = new TreeNode(10);
@@ -81,11 +104,17 @@ int main(){
     preorder(root);
     postorder(root);
     vector<int> preorder = iterativePreorder(root);
+    vector<int> inorder = iterativeInorder(root);
 
     // printing result return by iterative preorder.
     for(int i=0; i<preorder.size(); i++){
         cout<<preorder[i]<<" ";
     }
+
+    // printing result return by iterative inorder.
+    for(int i=0; i<inorder.size(); i++){
+        cout<<inorder[i]<<" ";
+    } 
     
     return 0;
 
